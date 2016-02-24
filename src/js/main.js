@@ -11,3 +11,4 @@ function checkUser( user ) {
         return false;
     }
 }
+

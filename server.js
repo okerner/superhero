@@ -3,14 +3,6 @@ var express = require('express');
 var fs = require('fs');
 var itf = require('./my_modules/itf_module');
 
-var str = 1;
-itf.tu( str, function(error, newStr){
-   if ( error ){
-        console.error( error );
-   } else {
-        console.log( 'New string is ', newStr );
-   }
-});
 // Globális változók
 var port = 3333;
 var staticDir = 'build';
@@ -20,6 +12,11 @@ var app = express();
 
 // Statikus fájlok.
 app.use(express.static(staticDir));
+
+app.use( function( req, res, next ){
+    console.log( req.url );
+    next();
+});
 
 // Definiáljuk a szerver működését.
 app.get('/', function (req, res) {
