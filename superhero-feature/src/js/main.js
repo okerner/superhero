@@ -1,6 +1,6 @@
 // Userek lekérése.
-jQuery.getJSON( 'users', function( users ) {
-    console.log( 'users', users );
+jQuery.getJSON('users', function (users) {
+    console.log('all users', users);
 });
 
 // Check user.
@@ -11,6 +11,3 @@ function checkUser( user ) {
         return false;
     }
 }
-
-
-
