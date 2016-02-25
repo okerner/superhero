@@ -1,2 +1,2 @@
 # superhero
-Superhero course in ITFactory 
+Superhero course in ItFactory
