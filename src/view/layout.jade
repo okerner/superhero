@@ -1,5 +1,5 @@
 - var classes = ['main', 'large', 'no-padding'];
-- var atts = {'data-ng-change':'runChangeMethod'};
+- var atts = {'data-ng-change': 'runChangeMethod()'};
 
 doctype html
 html(lang='')
@@ -18,7 +18,9 @@ html(lang='')
       script(src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js')
       script(src='https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js')
   body
-    block menu
+
     include ./menu.jade
+
     block content
+
     include ./footer.jade

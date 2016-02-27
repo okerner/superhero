@@ -1,37 +1,48 @@
-// Mongodb adatmodell
+// Mongodb adatmodell.
 // Kezeli a megadott táblát. itf
-var db;
-
-function setConnection( mongo_db ) {
-  db = mongo_db;
+var db,
+    Itf;
+function setConnection( mongodb ) {
+    db = mongodb;
+    setModel();
 }
 
-// Kollekció modell
-var Itf = mongoose.model( 'itf' , {
-  name : String,
-  email : String,
-  order: {
-    date: Date,
-    amount: Number,
-    status: String,
-    product: String
-  }
-});
+// Kollekció modell.
+function setModel() {
 
-// Adatok olvasása a kollekcióból
+    Itf = db.model( 'itf', {
+        name: String,
+        email: String,
+        order: {
+            date: Date,
+            amount: Number,
+            status: String,
+            product: String
+        }
+    }, 'itf' );
+
+    /* var user = new Itf( {'name': 'Joe'} );
+    user.save(); */
+
+}
+
+// Adatok olvasása a kollekcióból.
 function read( where, callBack ) {
-  Itf.find( where, function( err, data){
-    if ( err ) {
-      console.error( 'Error in query: ', where );
-      callBack( {} )
-    }
-    else {
-      callBack( data );
-    }
-  });
+    Itf.find( where, function( err, data ) {
+        if ( err ) {
+            console.error( 'Error in query: ', where );
+            callBack( {} );
+        } else {
+            callBack( data );
+        }
+    });
 }
 
-//Publikus elemek
+// Publikus elemek.
 module.exports = {
-  setConnectio: setConnection
+    setConnection: setConnection,
+    read: read
 };
+
+
+
